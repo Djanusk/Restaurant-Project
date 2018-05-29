@@ -23,7 +23,7 @@ Route::get('users', function() {
         "email" => "d.janusk@gmail.com",
         "password" => bcrypt("astronomy")
     ]);
-
-
     return User::all();
 });
+
+Route::get('/main', 'MainController@index');
