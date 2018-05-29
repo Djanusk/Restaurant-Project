@@ -11,6 +11,19 @@
 |
 */
 
+use App\User;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('users', function() {
+    User::create ([
+        "name" => "David",
+        "email" => "d.janusk@gmail.com",
+        "password" => bcrypt("astronomy")
+    ]);
+
+
+    return User::all();
 });
