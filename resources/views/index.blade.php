@@ -40,9 +40,9 @@
             <br/>
             <h3 align="center" class="header-h">Login Successful</h3>
             <br/>
-            <hr>
+            
             @if(isset(Auth::user()->email))
-            <div align="center">
+            <div align="center" class="well well-lg" style="background-color:brown;border-color:white;">
               <h3 class="header-h"><strong>Welcome {{ Auth::user()->name }}</strong></h3>
               
               <a href="{{ url('/main/logout') }}" class="btn btn-warning">Logout</a>
@@ -50,29 +50,32 @@
             @else
               <script>window.location = "/main";</script>
             @endif
-            <hr>
+            
           </div>
         <div class="col-md-0 col-xs-0">
         </div>
       </div>
 
       <div class="row">
-        <h3 align="center" class="header-h">Your Reservation table</h3>
-        <table class="table table-hover" style="background-color:white">
-          <thead>
+        <h3 align="center" class="header-h">Your Reservation table</h3><br/>
+        <table class="table" style="background-color:brown; color:white;">
+          <thead class="thead-light">
             <tr>
-              <th>Firstname</th>
-              <th>Lastname</th>
+              <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
-              <th>Table</th>
-              <th>Number of people</th>
+              <th>Table Nr.</th>
+              <th>People Nr.</th>
               <th>Date</th>
               <th>Time</th>
             </tr>
           </thead>
           <tbody>
-           
+            <tr>
+              <td>{{Auth::user()->name}}</td>
+              <td>{{Auth::user()->email}}</td>
+              <td>Cancel</td>
+            </tr>
           </tbody>
         </table>
       </div>
