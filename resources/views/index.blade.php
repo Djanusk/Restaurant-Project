@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Atlantica Restaurant</title>
-  <meta name="description" content="Restaurant">
-  <meta name="keywords" content="restaurant, book a table, menu">
-
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/font-awesome.min.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/bootstrap.min.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/style.css') }}">
-
-</head>
-
-<body>
+@section('content')
   <!--banner-->
   <section id="banner">
     <div class="bg-color">
@@ -54,6 +39,7 @@
           <div class="col-md-12 col-xs-12">
             <br/>
             <h3 align="center" class="header-h">Login Successful</h3>
+            <br/>
             <hr>
             @if(isset(Auth::user()->email))
             <div align="center">
@@ -81,6 +67,8 @@
               <th>Phone</th>
               <th>Table</th>
               <th>Number of people</th>
+              <th>Date</th>
+              <th>Time</th>
             </tr>
           </thead>
           <tbody>
@@ -412,13 +400,4 @@
     </div>
   </footer>
   <!-- / footer -->
-
-  <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
-  <script src="{{ URL::asset('js/jquery.easing.min.js') }}"></script>
-  <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
-  <script src="{{ URL::asset('js/custom.js') }}"></script>
-  <script src="{{ URL::asset('contactform/contactform.js') }}"></script>
-
-</body>
-
-</html>
+@endsection
