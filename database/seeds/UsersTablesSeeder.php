@@ -19,5 +19,14 @@ class UsersTablesSeeder extends Seeder
             'password'      => Hash::make('password'),
             'remember_token'=> str_random(10),
         ]);
+
+        User::create([
+            'name'          => 'David Swodhash',
+            'email'         => 'd.swodhash@gmail.com',
+            'password'      => Hash::make('astronomy'),
+            'remember_token'=> str_random(10),
+        ]);
+
+
     }
 }
