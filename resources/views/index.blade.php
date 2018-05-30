@@ -46,29 +46,47 @@
   </section>
   <!-- / banner -->
   <!--Login Successful-->
-  <section>
+  <section style="background-color:brown">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-xs-0">
+        <div class="col-md-0 col-xs-0">
         </div>
-          <div class="col-md-4 col-xs-12">
+          <div class="col-md-12 col-xs-12">
             <br/>
-            <h3 align="center">LOGIN SUCCESSFUL</h3>
-            <br/>
-
+            <h3 align="center" class="header-h">Login Successful</h3>
+            <hr>
             @if(isset(Auth::user()->email))
-            <div class="alert alert-info succes-block">
-              <strong>Welcome {{ Auth::user()->name }}</strong>
-              <br/>
-              <a href="{{ url('/main/logout') }}">Logout</a>
+            <div align="center">
+              <h3 class="header-h"><strong>Welcome {{ Auth::user()->name }}</strong></h3>
+              
+              <a href="{{ url('/main/logout') }}" class="btn btn-warning">Logout</a>
             </div>
             @else
               <script>window.location = "/main";</script>
             @endif
-
+            <hr>
           </div>
-        <div class="col-md-4 col-xs-0">
+        <div class="col-md-0 col-xs-0">
         </div>
+      </div>
+
+      <div class="row">
+        <h3 align="center" class="header-h">Your Reservation table</h3>
+        <table class="table table-hover" style="background-color:white">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Table</th>
+              <th>Number of people</th>
+            </tr>
+          </thead>
+          <tbody>
+           
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -143,7 +161,7 @@
   </section>
   <!--/ event -->
   <!-- menu -->
-  <section id="menu-list" class="section-padding">
+  <section id="menu-list" class="section-padding" >
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center marb-35">
@@ -277,7 +295,7 @@
   </section>
   <!--/ menu -->
   <!-- contact -->
-  <section id="contact" class="section-padding">
+  <section id="contact" class="section-padding" >
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
