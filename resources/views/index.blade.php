@@ -11,7 +11,7 @@
             <a href="#about">About</a>
             <a href="#event">Event</a>
             <a href="#menu-list">Menu</a>
-            <a href="#contact">Book a table</a>
+            <a href="#book">Book a table</a>
           </div>
           <!-- Use any element to open the sidenav -->
           <span onclick="openNav()" class="pull-right menu-icon">☰</span>
@@ -31,7 +31,7 @@
   </section>
   <!-- / banner -->
   <!--Login Successful-->
-  <section style="background-color:brown">
+  <section id="book" style="background-color:brown">
     <div class="container">
       <div class="row">
         <div class="col-md-0 col-xs-0">
@@ -56,7 +56,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" style="background-color:brown">
         <h3 align="center" class="header-h">Your Reservation table</h3><br/>
         <table class="table" style="background-color:brown; color:white;">
           <thead class="thead-light">
@@ -71,11 +71,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{{Auth::user()->name}}</td>
-              <td>{{Auth::user()->email}}</td>
-              <td>Cancel</td>
-            </tr>
+            @if(count($users) > 1)
+              @foreach($users as $user)
+                <tr>
+                  <td>{{$user->name}}</td>
+                  <td>{{$user->email}}</td>
+                  <td>Cancel</td>
+                </tr>
+              @endforeach
+            @else
+              <tr>
+                <td>No Reservations Found</td>
+              </tr>
+            @endif
           </tbody>
         </table>
         <br/>

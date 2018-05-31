@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
+use App\User;
 
 class MainController extends Controller
 {
@@ -39,7 +40,8 @@ class MainController extends Controller
 
     function successlogin()
     {
-        return view('index');
+        $users = User::all();
+        return view('index')->with('users', $users);
     }
 
     function logout()
