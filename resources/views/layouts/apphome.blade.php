@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top" style="background-color:orange;">
+        <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0px; background-color:orange;">
             <div class="container">
                 <div class="navbar-header">
 

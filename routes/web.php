@@ -14,21 +14,27 @@
 use App\User;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
-Route::get('users', function() {
+/*Route::get('users', function() {
     User::create ([
         "name" => "David",
         "email" => "d.janusk@gmail.com",
         "password" => bcrypt("astronomy")
     ]);
     return User::all();
-});
+});*/
 
-Route::get('/main', 'MainController@index');
+/*Route::get('/main', 'MainController@index');
+Route::get('/register', 'MainController@register');
 Route::post('/main/checklogin', 'MainController@checklogin');
-Route::get('/main/successlogin', 'MainController@successlogin');
+Route::get('/main/home', 'MainController@home');
 Route::get('main/logout', 'MainController@logout');
+Route::resource('posts', 'PostsController');*/
 
-Route::resource('posts', 'PostsController');
+Route::get('/', 'HomeController@logout');
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

@@ -14,6 +14,16 @@ class MainController extends Controller
         return view('login');
     }
 
+    function register()
+    {
+        return view('register');
+    }
+
+    function checkregister()
+    {
+        return view('login');
+    }
+
     function checklogin(Request $request)
     {
         //Checks the validity of email and password
@@ -30,7 +40,7 @@ class MainController extends Controller
         //If Validation successful execute
         if(Auth::attempt($user_data))
         {
-            return redirect('main/successlogin');
+            return redirect('main/home');
         }
         else
         {
@@ -38,9 +48,9 @@ class MainController extends Controller
         }
     }
 
-    function successlogin()
+    function home()
     {
-        $users = User::all();
+        $users = User::orderBy('name','asc')->paginate(5);
         return view('index')->with('users', $users);
     }
 

@@ -1,8 +1,9 @@
 @extends('layouts.appmain')
 
 @section('content')
+<div class="wrapper">
     <div class="container">
-        <div class="row">
+        <div class="row" style="padding:10%;background-color:lightgrey">
             <div class="col-md-4 col-xs-0">
             </div>
             <div class="col-md-4 col-xs-12">
@@ -44,6 +45,7 @@
                 </div>
                 <div class="form-group">
                     <input type="submit" name="login" class="btn btn-primary" value="Login"/>
+                    <a href="{{ url('/register') }}" class="btn btn-primary">Register</a>
                 </div>
             </form>
             </div>
@@ -51,4 +53,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

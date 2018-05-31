@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.apphome')
 
 @section('content')
   <!--banner-->
@@ -8,10 +8,11 @@
         <div class="container">
           <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#mytable">My Table</a>
             <a href="#about">About</a>
             <a href="#event">Event</a>
             <a href="#menu-list">Menu</a>
-            <a href="#book">Book a table</a>
+            <a href="#book">Book A Table</a>
           </div>
           <!-- Use any element to open the sidenav -->
           <span onclick="openNav()" class="pull-right menu-icon">☰</span>
@@ -31,7 +32,7 @@
   </section>
   <!-- / banner -->
   <!--Login Successful-->
-  <section id="book" style="background-color:brown">
+  <section id="mytable" style="background-color:brown">
     <div class="container">
       <div class="row">
         <div class="col-md-0 col-xs-0">
@@ -44,11 +45,9 @@
             @if(isset(Auth::user()->email))
             <div align="center" class="well well-lg" style="background-color:brown;border-color:white;">
               <h3 class="header-h"><strong>Welcome {{ Auth::user()->name }}</strong></h3>
-              
-              <a href="{{ url('/main/logout') }}" class="btn btn-warning">Logout</a>
             </div>
             @else
-              <script>window.location = "/main";</script>
+              <script>window.location = "/login";</script>
             @endif
             
           </div>
@@ -71,18 +70,20 @@
             </tr>
           </thead>
           <tbody>
-            @if(count($users) > 1)
-              @foreach($users as $user)
-                <tr>
-                  <td>{{$user->name}}</td>
-                  <td>{{$user->email}}</td>
-                  <td>Cancel</td>
-                </tr>
-              @endforeach
+            @if(count($users) > 0)
+                @foreach($users as $user)
+                    <tr>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->created_at}}</td>
+                        <td>Cancel</td>
+                    </tr>
+                @endforeach
+                {{$users->links()}}
             @else
-              <tr>
+                <tr>
                 <td>No Reservations Found</td>
-              </tr>
+                </tr>
             @endif
           </tbody>
         </table>
@@ -102,7 +103,7 @@
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-10">
-          <div class="col-md-6 col-sm-6">
+          <div class="col-md-12 col-sm-6">
             <div class="about-info">
               <h2 class="heading">vel illum qui dolorem eum</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero impedit inventore culpa vero accusamus in nostrum dignissimos modi, molestiae. Autem iusto esse necessitatibus ex corporis earum quaerat voluptates quibusdam dicta!</p>
@@ -116,9 +117,9 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-sm-6">
+          <!--<div class="col-md-6 col-sm-6">
             <img src="img/res01.jpg" alt="" class="img-responsive">
-          </div>
+          </div>-->
         </div>
         <div class="col-md-1"></div>
       </div>
@@ -136,10 +137,10 @@
           </div>
           <div class="col-md-12" style="padding-bottom:60px;">
             <div class="item active left">
-              <div class="col-md-6 col-sm-6 left-images">
+              <!--<div class="col-md-6 col-sm-6 left-images">
                 <img src="img/res02.jpg" class="img-responsive">
-              </div>
-              <div class="col-md-6 col-sm-6 details-text">
+              </div>-->
+              <div class="col-md-12 col-sm-6 details-text">
                 <div class="content-holder">
                   <h2>Joyful party</h2>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore eos suscipit earum voluptas aliquam recusandae, quae iure adipisci, inventore quia, quos delectus quaerat praesentium id expedita nihil illo accusantium, tempora.</p>
@@ -183,7 +184,7 @@
 
           <div class="breakfast menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">CHICKEN</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
               <span class="menu-price">$20.99</span>
             </span>
@@ -192,7 +193,7 @@
 
           <div class="breakfast menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">SOUP</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
               <span class="menu-price">$20.99</span>
             </span>
@@ -201,7 +202,7 @@
 
           <div class="breakfast menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">BEEF</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
               <span class="menu-price">$20.99</span>
             </span>
@@ -210,7 +211,7 @@
 
           <div class="breakfast menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">BEER</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
               <span class="menu-price">$20.99</span>
             </span>
@@ -219,7 +220,7 @@
 
           <div class="lunch menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">VINE</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
               <span class="menu-price">$20.99</span>
             </span>
@@ -228,7 +229,7 @@
 
           <div class="lunch menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">ORANGES</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
               <span class="menu-price">$20.99</span>
             </span>
@@ -237,7 +238,7 @@
 
           <div class="lunch menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">APPLES</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
               <span class="menu-price">$20.99</span>
             </span>
@@ -246,7 +247,7 @@
 
           <div class="lunch menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">COFFEE</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
               <span class="menu-price">$20.99</span>
             </span>
@@ -255,7 +256,7 @@
 
           <div class="lunch menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">PASTA</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
               <span class="menu-price">$20.99</span>
             </span>
@@ -264,7 +265,7 @@
 
           <div class="dinner menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">SPAGHETTI</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
               <span class="menu-price">$20.99</span>
             </span>
@@ -273,7 +274,7 @@
 
           <div class="dinner menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">LAZANNIA</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
               <span class="menu-price">$20.99</span>
             </span>
@@ -282,7 +283,7 @@
 
           <div class="dinner menu-restaurant">
             <span class="clearfix">
-              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">Food Item Name</a>
+              <a class="menu-title" href="#" data-meal-img="assets/img/restaurant/rib.jpg">PIZZA</a>
               <span style="left: 166px; right: 44px;" class="menu-line"></span>
               <span class="menu-price">$20.99</span>
             </span>
@@ -294,8 +295,8 @@
     </div>
   </section>
   <!--/ menu -->
-  <!-- contact -->
-  <section id="contact" class="section-padding" >
+  <!-- contact --> 
+  <section id="book" class="section-padding" >
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
@@ -394,7 +395,7 @@
         <div class="col-md-offset-3 col-md-6 text-center">
           <div class="widget">
             <h4 class="widget-title">Atlantica</h4>
-            <address>324 Ellte Road<br>Delhi, DL 110013</address>
+            <address>150 Buckingham Road<br>New York City, NY</address>
             <div class="social-list">
               <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
               <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
