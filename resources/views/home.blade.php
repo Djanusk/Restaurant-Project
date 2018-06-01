@@ -77,6 +77,7 @@
                         <td>{{$user->email}}</td>
                         <td>{{$user->created_at}}</td>
                         <td>Cancel</td>
+                        
                     </tr>
                 @endforeach
                 {{$users->links()}}
@@ -295,7 +296,59 @@
     </div>
   </section>
   <!--/ menu -->
-  <!-- contact --> 
+  <section id="book" class="section-padding" style="background-color:white  ">
+      <div class="container">
+          <div class="row" align="center">
+              <h1 class="header-h">Book Your table</h1>
+
+              @if(count($errors) > 0)
+                @foreach($errors as $error)
+                    <div class="alert alert-danger">
+                        {{$error}}
+                    </div>
+                @endforeach
+              @endif
+
+              @if(session('success'))
+                  <div class="alert alert-success">
+                      {{session('success')}}
+                  </div>
+              @endif
+
+              @if(session('error'))
+                  <div class="alert alert-danger">
+                      {{session('error')}}
+                  </div>
+              @endif
+              <br/>
+              {!! Form::open(['action' => 'HomeController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                <div class="form-group" style="width:30%">
+                  {{Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Name'])}}
+                </div>
+                <br/>
+                <div class="form-group" style="width:30%" >
+                  {{Form::text('people', '', ['class' => 'form-control', 'placeholder' => 'Numper of People'])}}
+                </div>
+                <br/>
+                <div class="form-group" style="width:30%">
+                  {{Form::text('date', '', ['class' => 'form-control', 'placeholder' => 'Date'])}}
+                </div>
+                <br/>
+                <div class="form-group" style="width:30%">
+                  {{Form::text('time', '', ['class' => 'form-control', 'placeholder' => 'Time'])}}
+                </div>
+                <br/>
+                <div class="form-group" style="width:30%">
+                    {{Form::label('smokers', 'Smoking Table?')}}
+                    {{Form::select('smokers', ['Y' => 'Yes', 'N' => 'No'])}}
+                </div>
+                <br/>
+                {{Form::submit('Submit', ['class' => 'btn btn-warning'])}}
+              {!! Form::close() !!}
+          </div>
+      </div>
+  </section>  
+  <!-- contact 
   <section id="book" class="section-padding" >
     <div class="container">
       <div class="row">
@@ -386,7 +439,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>-->
   <!-- / contact -->
   <!-- footer -->
   <footer class="footer text-center">
@@ -413,4 +466,13 @@
     </div>
   </footer>
   <!-- / footer -->
+
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+  
 @endsection

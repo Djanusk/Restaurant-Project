@@ -16,10 +16,10 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->boolean('smokers');
             $table->string('people');
             $table->string('date');
             $table->string('time');
+            $table->string('smokers');
             $table->rememberToken();
             $table->timestamps();
         });
